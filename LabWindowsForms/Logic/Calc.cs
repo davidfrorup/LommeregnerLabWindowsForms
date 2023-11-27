@@ -22,6 +22,15 @@ namespace LabWindowsForms.Logic
                 case CalcType.Subtraction:
                     result = tal1 - tal2;
                     break;
+                case CalcType.Multiplication:
+                    result = tal1 * tal2;
+                    break;
+                case CalcType.Division:
+                    result = tal1 / tal2;
+                    break;
+                case CalcType.Modulos:
+                    result = tal1 % tal2;
+                    break;
             }
 
             return result;

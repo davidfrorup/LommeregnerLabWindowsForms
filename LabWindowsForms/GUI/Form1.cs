@@ -24,63 +24,10 @@ namespace LabWindowsForms
             _calculator = new Calc();
         }
 
-        private void btn0_Click(object sender, EventArgs e)
+        private void btnSender(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            txtBox.Text += button.Text;
-        }
-
-        private void btn1_Click(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            txtBox.Text += button.Text;
-        }
-
-        private void btn2_Click(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            txtBox.Text += button.Text;
-        }
-
-        private void btn3_Click(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            txtBox.Text += button.Text;
-        }
-
-        private void btn4_Click(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            txtBox.Text += button.Text;
-        }
-
-        private void btn5_Click(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            txtBox.Text += button.Text;
-        }
-
-        private void btn6_Click(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            txtBox.Text += button.Text;
-        }
-
-        private void btn7_Click(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            txtBox.Text += button.Text;
-        }
-
-        private void btn8_Click(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
-            txtBox.Text += button.Text;
-        }
-
-        private void btn9_Click(object sender, EventArgs e)
-        {
-            Button button = (Button)sender;
+            if (txtBox.Text == "0") txtBox.Text = "";
             txtBox.Text += button.Text;
         }
 
@@ -88,35 +35,48 @@ namespace LabWindowsForms
         {
             _firstValue = Convert.ToInt32(txtBox.Text);
             _calcOperatorMode = CalcType.Addition;
-            ClearCalculationValiabel();
+            
         }
 
         private void btnMinus_Click(object sender, EventArgs e)
         {
-            //var senderBox = (string)sender;
-            //var txt = senderBox;
-            
             _firstValue = Convert.ToInt32(txtBox.Text);
             _calcOperatorMode = CalcType.Subtraction;
+            ClearCalculationValiabel();
+        }
+        private void btnMultiplication_Click(object sender, EventArgs e)
+        {
+            _firstValue = Convert.ToInt32(txtBox.Text);
+            _calcOperatorMode = CalcType.Multiplication;
+            ClearCalculationValiabel();
+        }
+
+        private void btnDivision_Click(object sender, EventArgs e)
+        {
+            _firstValue = Convert.ToInt32(txtBox.Text);
+            _calcOperatorMode = CalcType.Division;
+            ClearCalculationValiabel();
+        }
+
+        private void btnModulus_Click(object sender, EventArgs e)
+        {
+            _firstValue = Convert.ToInt32(txtBox.Text);
+            _calcOperatorMode = CalcType.Modulos;
+
             ClearCalculationValiabel();
         }
 
         private void ClearCalculationValiabel()
         {
-            txtBox.Text = String.Empty;
+            txtBox.Text = "0";
+            txtBox.Focus();
         }
 
         private void btnEquals_Click(object sender, EventArgs e)
         {
-            if(txtBox.Text != "")
-            {
                 var result = _calculator.PerformCalculation(_calcOperatorMode, _firstValue, Convert.ToInt32(txtBox.Text));
                 txtBox.Text = result.ToString();
-            }
-            else
-            {
-                ClearCalculationValiabel();
-            }
+                txtBox.Focus();
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -125,83 +85,86 @@ namespace LabWindowsForms
             _firstValue = 0;
         }
 
-        private void txtBox_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
         private void txtBox_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.D0 || e.KeyCode == Keys.NumPad0)
-            {
-                btn0_Click(sender, (EventArgs)e);
-            }
+            //if (e.KeyCode == Keys.D0 || e.KeyCode == Keys.NumPad0)
+            //{
+            //    // txtBox.Text += "0";
+            //}
 
-            else if (e.KeyCode == Keys.D1 || e.KeyCode == Keys.NumPad1)
-            {
-                btn1_Click(sender, (EventArgs)e);
-            }
+            //else if (e.KeyCode == Keys.D1 || e.KeyCode == Keys.NumPad1)
+            //{
+            //    // txtBox.Text += "1";
+            //}
 
-            else if (e.KeyCode == Keys.D2 || e.KeyCode == Keys.NumPad2)
-            {
-                btn2_Click(sender, (EventArgs)e);
-            }
+            //else if (e.KeyCode == Keys.D2 || e.KeyCode == Keys.NumPad2)
+            //{
+            //    // txtBox.Text += "2";
+            //}
 
-            else if (e.KeyCode == Keys.D3 || e.KeyCode == Keys.NumPad3)
-            {
-                btn3_Click(sender, (EventArgs)e);
-            }
+            //else if (e.KeyCode == Keys.D3 || e.KeyCode == Keys.NumPad3)
+            //{
+            //    // txtBox.Text += "3";
+            //}
 
-            else if (e.KeyCode == Keys.D4 || e.KeyCode == Keys.NumPad4)
-            {
-                btn4_Click(sender, (EventArgs)e);
-            }
+            //else if (e.KeyCode == Keys.D4 || e.KeyCode == Keys.NumPad4)
+            //{
+            //    //  txtBox.Text += "4";
+            //}
 
-            else if (e.KeyCode == Keys.D5 || e.KeyCode == Keys.NumPad5)
-            {
-                btn5_Click(sender, (EventArgs)e);
-            }
+            //else if (e.KeyCode == Keys.D5 || e.KeyCode == Keys.NumPad5)
+            //{
+            //    //  txtBox.Text += "5";
+            //}
 
-            else if (e.KeyCode == Keys.D6 || e.KeyCode == Keys.NumPad6)
-            {
-                btn6_Click(sender, (EventArgs)e);
-            }
+            //else if (e.KeyCode == Keys.D6 || e.KeyCode == Keys.NumPad6)
+            //{
+            //    //  txtBox.Text += "6";
+            //}
 
-            else if (e.KeyCode == Keys.D7 || e.KeyCode == Keys.NumPad7)
-            {
-                btn7_Click(sender, (EventArgs)e);
-            }
+            //else if (e.KeyCode == Keys.D7 || e.KeyCode == Keys.NumPad7)
+            //{
+            //    //  txtBox.Text += "7";
+            //}
 
-            else if (e.KeyCode == Keys.D8 || e.KeyCode == Keys.NumPad8)
-            {
-                btn8_Click(sender, (EventArgs)e);
-            }
+            //else if (e.KeyCode == Keys.D8 || e.KeyCode == Keys.NumPad8)
+            //{
+            //    // txtBox.Text += "8";
+            //}
 
-            else if (e.KeyCode == Keys.D9 || e.KeyCode == Keys.NumPad9)
-            {
-                btn9_Click(sender, (EventArgs)e);
-            }
+            //else if (e.KeyCode == Keys.D9 || e.KeyCode == Keys.NumPad9)
+            //{
+            //    // txtBox.Text += "9";
+            //}
 
-            else if (e.KeyCode == Keys.Add)
+            if (e.KeyCode == Keys.Add)
             {
-                btnPlus_Click(sender, (EventArgs)e);
+                ClearCalculationValiabel();
+                _firstValue = Convert.ToInt32(txtBox.Text);
+                _calcOperatorMode = CalcType.Addition;
+                ClearCalculationValiabel();
             }
 
             else if (e.KeyCode == Keys.Subtract)
             {
-                btnMinus_Click(sender, (EventArgs)e);
+                ClearCalculationValiabel();
+                _firstValue = Convert.ToInt32(txtBox.Text);
+                _calcOperatorMode = CalcType.Subtraction;
+                ClearCalculationValiabel();
             }
 
             else if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Enter)
             {
-                btnEquals_Click(sender, (EventArgs)e);
+                btnEquals_Click(sender, e);
             }
 
-            else
-            {
-                ClearCalculationValiabel();
-            }
-           // var t = txtBox.Text;
+            //else
+            //{
+            //    ClearCalculationValiabel();
+            //}
+
+
+            // var t = txtBox.Text;
 
             /*
              And Logic
@@ -242,5 +205,7 @@ namespace LabWindowsForms
 
             //else if (!string.IsNullOrEmpty(name1)) { }
         }
+
+        
     }
 }
