@@ -39,7 +39,7 @@ namespace LabWindowsForms.Logic
 
     public enum CalcType
     {
-        
+        None = 0,
         Addition = 1,
         Subtraction = 2,
         Multiplication = 3,

@@ -26,23 +26,41 @@ namespace LabWindowsForms
 
         private void btnSender(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            if (txtBox.Text == "0") txtBox.Text = "";
-            txtBox.Text += button.Text;
+            
+                Button button = (Button)sender;
+                if (txtBox.Text == "0") txtBox.Text = "";
+                txtBox.Text += button.Text;
+            
         }
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
-            _firstValue = Convert.ToInt32(txtBox.Text);
-            _calcOperatorMode = CalcType.Addition;
-            
+            if (_firstValue == 0)
+            {
+                _firstValue = Convert.ToInt32(txtBox.Text);
+                _calcOperatorMode = CalcType.Addition;
+                ClearCalculationValiabel();
+            }
+            //else
+            //{
+            //    var result = _calculator.PerformCalculation(_calcOperatorMode, _firstValue, Convert.ToInt32(txtBox.Text));
+            //    txtBox.Text = result.ToString();
+            //    _firstValue = result;
+            //    txtBox.Focus();
+            //}
+
+
+
         }
+
 
         private void btnMinus_Click(object sender, EventArgs e)
         {
             _firstValue = Convert.ToInt32(txtBox.Text);
             _calcOperatorMode = CalcType.Subtraction;
             ClearCalculationValiabel();
+
+
         }
         private void btnMultiplication_Click(object sender, EventArgs e)
         {
@@ -137,26 +155,26 @@ namespace LabWindowsForms
             //    // txtBox.Text += "9";
             //}
 
-            if (e.KeyCode == Keys.Add)
-            {
-                ClearCalculationValiabel();
-                _firstValue = Convert.ToInt32(txtBox.Text);
-                _calcOperatorMode = CalcType.Addition;
-                ClearCalculationValiabel();
-            }
+            //if (e.KeyCode == Keys.Add)
+            //{
+            //    ClearCalculationValiabel();
+            //    _firstValue = Convert.ToInt32(txtBox.Text);
+            //    _calcOperatorMode = CalcType.Addition;
+            //    ClearCalculationValiabel();
+            //}
 
-            else if (e.KeyCode == Keys.Subtract)
-            {
-                ClearCalculationValiabel();
-                _firstValue = Convert.ToInt32(txtBox.Text);
-                _calcOperatorMode = CalcType.Subtraction;
-                ClearCalculationValiabel();
-            }
+            //else if (e.KeyCode == Keys.Subtract)
+            //{
+            //    ClearCalculationValiabel();
+            //    _firstValue = Convert.ToInt32(txtBox.Text);
+            //    _calcOperatorMode = CalcType.Subtraction;
+            //    ClearCalculationValiabel();
+            //}
 
-            else if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Enter)
-            {
-                btnEquals_Click(sender, e);
-            }
+            //else if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Enter)
+            //{
+            //    btnEquals_Click(sender, e);
+            //}
 
             //else
             //{
