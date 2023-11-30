@@ -60,8 +60,7 @@
             this.txtBox.Size = new System.Drawing.Size(372, 50);
             this.txtBox.TabIndex = 0;
             this.txtBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtBox.TextChanged += new System.EventHandler(this.txtBox_TextChanged);
-            this.txtBox.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtBox_KeyPress);
+            this.txtBox.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtBox_PreviewKeyDown);
             // 
             // btn9
             // 

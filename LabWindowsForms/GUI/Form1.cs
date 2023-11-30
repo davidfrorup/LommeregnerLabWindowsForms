@@ -46,6 +46,7 @@ namespace LabWindowsForms
                 _firstValue = Convert.ToDouble(txtBox.Text);
                 _calcOperatorMode = CalcType.Addition;
                 ClearCalculationValiabel();
+                txtBox.Focus();
             }
             else
             {
@@ -147,8 +148,140 @@ namespace LabWindowsForms
             }
         }
 
-        private void txtBox_KeyPress(object sender, KeyEventArgs e)
+        //private void txtBox_KeyPress(object sender, KeyEventArgs e)
+        //{
+
+            
+
+            //if (e.KeyCode == Keys.D0 || e.KeyCode == Keys.NumPad0)
+            //{
+            //    //txtBox.Text += "0";
+            //}
+
+            //else if (e.KeyCode == Keys.D1 || e.KeyCode == Keys.NumPad1)
+            //{
+            //    //txtBox.Text += "1";
+            //}
+
+            //else if (e.KeyCode == Keys.D2 || e.KeyCode == Keys.NumPad2)
+            //{
+            //    // txtBox.Text += "2";
+            //}
+
+            //else if (e.KeyCode == Keys.D3 || e.KeyCode == Keys.NumPad3)
+            //{
+            //    // txtBox.Text += "3";
+            //}
+
+            //else if (e.KeyCode == Keys.D4 || e.KeyCode == Keys.NumPad4)
+            //{
+            //    //  txtBox.Text += "4";
+            //}
+
+            //else if (e.KeyCode == Keys.D5 || e.KeyCode == Keys.NumPad5)
+            //{
+            //    //  txtBox.Text += "5";
+            //}
+
+            //else if (e.KeyCode == Keys.D6 || e.KeyCode == Keys.NumPad6)
+            //{
+            //    //  txtBox.Text += "6";
+            //}
+
+            //else if (e.KeyCode == Keys.D7 || e.KeyCode == Keys.NumPad7)
+            //{
+            //    //  txtBox.Text += "7";
+            //}
+
+            //else if (e.KeyCode == Keys.D8 || e.KeyCode == Keys.NumPad8)
+            //{
+            //    // txtBox.Text += "8";
+            //}
+
+            //else if (e.KeyCode == Keys.D9 || e.KeyCode == Keys.NumPad9)
+            //{
+            //    // txtBox.Text += "9";
+            //}
+
+            //else if (e.KeyCode == Keys.Add)
+            //{
+                
+            //    ClearCalculationValiabel();
+            //    //txtBox.Text = txtBox.Text.Substring(0, txtBox.Text.Length - 1);
+            //    //_firstValue = Convert.ToDouble(txtBox.Text.Length - 1);
+            //    _firstValue = Convert.ToDouble(txtBox.Text);
+            //    _calcOperatorMode = CalcType.Addition;
+            //    ClearCalculationValiabel();
+            //    txtBox.Focus();
+            //}
+
+            //else if (e.KeyCode == Keys.Subtract)
+            //{
+            //    ClearCalculationValiabel();
+            //    _firstValue = Convert.ToDouble(txtBox.Text);
+            //    _calcOperatorMode = CalcType.Subtraction;
+            //    ClearCalculationValiabel();
+            //    txtBox.Focus();
+            //}
+
+            //else if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Enter)
+            //{
+            //    btnEquals_Click(sender, e);
+            //}
+
+            //else
+            //{
+            //    ClearCalculationValiabel();
+            //}
+
+
+            // var t = txtBox.Text;
+
+            /*
+             And Logic
+             | 0  0 | 0 |
+             | 0  1 | 0 |
+             | 1  0 | 0 |
+             | 1  1 | 1 |
+            
+             NOT And Logic
+             | 0  0 | 1 |
+             | 0  1 | 1 |
+             | 1  0 | 1 |
+             | 1  1 | 0 |
+
+             OR Logic
+             | 0  0 | 0 |
+             | 0  1 | 1 |
+             | 1  0 | 1 |
+             | 1  1 | 1 |
+            
+             XOR - Logic
+             | A | B | A XOR B |
+             | 0 | 0 |    0    |
+             | 0 | 1 |    0    |
+             | 1 | 0 |    0    |
+             | 1 | 1 |    0    |
+
+
+             */
+
+            //string name1 = Console.ReadLine();
+            //string name2 = Console.ReadLine();
+
+            //if(name1 != "David" || name2 != "Nanna")
+            //{
+
+            //}
+
+            //else if (!string.IsNullOrEmpty(name1)) { }
+        //}
+
+        private void txtBox_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
+
+            txtBox.Focus();
+
             if (e.KeyCode == Keys.D0 || e.KeyCode == Keys.NumPad0)
             {
                 //txtBox.Text += "0";
@@ -199,22 +332,31 @@ namespace LabWindowsForms
                 // txtBox.Text += "9";
             }
 
-            if (e.KeyCode == Keys.Add)
+            else if (e.KeyCode == Keys.Add)
             {
-                ClearCalculationValiabel();
-                //txtBox.Text = txtBox.Text.Substring(0, txtBox.Text.Length - 1);
-                //_firstValue = Convert.ToDouble(txtBox.Text.Length - 1);
+                //ClearCalculationValiabel();
+                //btnPlus_Click(sender,e);
+                //ClearCalculationValiabel();
+                ////txtBox.Text = txtBox.Text.Substring(0, txtBox.Text.Length - 1);
+                ////_firstValue = Convert.ToDouble(txtBox.Text.Length - 1);
+                //_firstValue = Convert.ToDouble(txtBox.Text);
+                //_calcOperatorMode = CalcType.Addition;
+                //ClearCalculationValiabel();
+                
                 _firstValue = Convert.ToDouble(txtBox.Text);
                 _calcOperatorMode = CalcType.Addition;
-                ClearCalculationValiabel();
+                txtBox.Focus();
+                txtBox.Text = "";
+                txtBox.Focus();
+                
             }
 
             else if (e.KeyCode == Keys.Subtract)
             {
-                ClearCalculationValiabel();
                 _firstValue = Convert.ToDouble(txtBox.Text);
                 _calcOperatorMode = CalcType.Subtraction;
-                ClearCalculationValiabel();
+                txtBox.Focus();
+                txtBox.Text = "";
                 txtBox.Focus();
             }
 
@@ -222,58 +364,7 @@ namespace LabWindowsForms
             {
                 btnEquals_Click(sender, e);
             }
-
-            //else
-            //{
-            //    ClearCalculationValiabel();
-            //}
-
-
-            // var t = txtBox.Text;
-
-            /*
-             And Logic
-             | 0  0 | 0 |
-             | 0  1 | 0 |
-             | 1  0 | 0 |
-             | 1  1 | 1 |
             
-             NOT And Logic
-             | 0  0 | 1 |
-             | 0  1 | 1 |
-             | 1  0 | 1 |
-             | 1  1 | 0 |
-
-             OR Logic
-             | 0  0 | 0 |
-             | 0  1 | 1 |
-             | 1  0 | 1 |
-             | 1  1 | 1 |
-            
-             XOR - Logic
-             | A | B | A XOR B |
-             | 0 | 0 |    0    |
-             | 0 | 1 |    0    |
-             | 1 | 0 |    0    |
-             | 1 | 1 |    0    |
-
-
-             */
-
-            //string name1 = Console.ReadLine();
-            //string name2 = Console.ReadLine();
-
-            //if(name1 != "David" || name2 != "Nanna")
-            //{
-
-            //}
-
-            //else if (!string.IsNullOrEmpty(name1)) { }
-        }
-
-        private void txtBox_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }
