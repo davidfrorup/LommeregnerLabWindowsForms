@@ -9,10 +9,9 @@ namespace LabWindowsForms.Logic
     public class Calc
     {
 
-
-        public int PerformCalculation(CalcType type, int tal1, int tal2)
+        public double PerformCalculation(CalcType type, double tal1, double tal2)
         {
-            int result = 0;
+            double result = 0;
 
             switch (type)
             {

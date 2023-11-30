@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LabWindowsForms.Logic;
+using System;
 using System.Windows.Forms;
-using LabWindowsForms.Logic;
 
 namespace LabWindowsForms
 {
@@ -15,7 +8,7 @@ namespace LabWindowsForms
     {
 
         private Calc _calculator;
-        private int _firstValue;
+        private double _firstValue;
         private CalcType _calcOperatorMode;
 
         public Form1()
@@ -26,21 +19,21 @@ namespace LabWindowsForms
 
         private void btnSender(object sender, EventArgs e)
         {
-            
-                Button button = (Button)sender;
-                if (txtBox.Text == "0") txtBox.Text = "";
-                txtBox.Text += button.Text;
-            
+
+            Button button = (Button)sender;
+            if (txtBox.Text == "0") txtBox.Text = "";
+            txtBox.Text += button.Text;
+
         }
 
         private void btnPlus_Click(object sender, EventArgs e)
         {
-            if (_firstValue == 0)
-            {
-                _firstValue = Convert.ToInt32(txtBox.Text);
-                _calcOperatorMode = CalcType.Addition;
-                ClearCalculationValiabel();
-            }
+            //if (_firstValue == 0)
+            //{
+            //    _firstValue = Convert.ToDouble(txtBox.Text);
+            //    _calcOperatorMode = CalcType.Addition;
+            //    ClearCalculationValiabel();
+            //}
             //else
             //{
             //    var result = _calculator.PerformCalculation(_calcOperatorMode, _firstValue, Convert.ToInt32(txtBox.Text));
@@ -48,40 +41,72 @@ namespace LabWindowsForms
             //    _firstValue = result;
             //    txtBox.Focus();
             //}
-
-
-
+            if (txtBox.Text != "")
+            {
+                _firstValue = Convert.ToDouble(txtBox.Text);
+                _calcOperatorMode = CalcType.Addition;
+                ClearCalculationValiabel();
+            }
+            else
+            {
+                ClearCalculationValiabel();
+            }
         }
 
 
         private void btnMinus_Click(object sender, EventArgs e)
         {
-            _firstValue = Convert.ToInt32(txtBox.Text);
-            _calcOperatorMode = CalcType.Subtraction;
-            ClearCalculationValiabel();
-
-
+            if (txtBox.Text != "")
+            {
+                _firstValue = Convert.ToDouble(txtBox.Text);
+                _calcOperatorMode = CalcType.Subtraction;
+                ClearCalculationValiabel();
+            }
+            else
+            {
+                ClearCalculationValiabel();
+            }
         }
         private void btnMultiplication_Click(object sender, EventArgs e)
         {
-            _firstValue = Convert.ToInt32(txtBox.Text);
-            _calcOperatorMode = CalcType.Multiplication;
-            ClearCalculationValiabel();
+            if (txtBox.Text != "")
+            {
+                _firstValue = Convert.ToDouble(txtBox.Text);
+                _calcOperatorMode = CalcType.Multiplication;
+                ClearCalculationValiabel();
+            }
+            else
+            {
+                ClearCalculationValiabel();
+            }
         }
 
         private void btnDivision_Click(object sender, EventArgs e)
         {
-            _firstValue = Convert.ToInt32(txtBox.Text);
-            _calcOperatorMode = CalcType.Division;
-            ClearCalculationValiabel();
+            if (txtBox.Text != "")
+            {
+                _firstValue = Convert.ToDouble(txtBox.Text);
+                _calcOperatorMode = CalcType.Division;
+                ClearCalculationValiabel();
+            }
+            else
+            {
+                ClearCalculationValiabel();
+            }
         }
 
         private void btnModulus_Click(object sender, EventArgs e)
         {
-            _firstValue = Convert.ToInt32(txtBox.Text);
-            _calcOperatorMode = CalcType.Modulos;
-
-            ClearCalculationValiabel();
+            if (txtBox.Text != "")
+            {
+                _firstValue = Convert.ToDouble(txtBox.Text);
+                _calcOperatorMode = CalcType.Modulos;
+                ClearCalculationValiabel();
+            }
+            else
+            {
+                ClearCalculationValiabel();
+            }
         }
 
         private void ClearCalculationValiabel()
@@ -92,9 +117,16 @@ namespace LabWindowsForms
 
         private void btnEquals_Click(object sender, EventArgs e)
         {
-                var result = _calculator.PerformCalculation(_calcOperatorMode, _firstValue, Convert.ToInt32(txtBox.Text));
+            if (txtBox.Text != "")
+            {
+                var result = _calculator.PerformCalculation(_calcOperatorMode, _firstValue, Convert.ToDouble(txtBox.Text));
                 txtBox.Text = result.ToString();
                 txtBox.Focus();
+            }
+            else
+            {
+                ClearCalculationValiabel();
+            }
         }
 
         private void btnClear_Click(object sender, EventArgs e)
@@ -103,78 +135,93 @@ namespace LabWindowsForms
             _firstValue = 0;
         }
 
-        private void txtBox_KeyUp(object sender, KeyEventArgs e)
+        private void btnErase_Click(object sender, EventArgs e)
         {
-            //if (e.KeyCode == Keys.D0 || e.KeyCode == Keys.NumPad0)
-            //{
-            //    // txtBox.Text += "0";
-            //}
+            if (txtBox.Text.Length > 0)
+            {
+                txtBox.Text = txtBox.Text.Substring(0, txtBox.Text.Length - 1);
+            }
+            else
+            {
+                ClearCalculationValiabel();
+            }
+        }
 
-            //else if (e.KeyCode == Keys.D1 || e.KeyCode == Keys.NumPad1)
-            //{
-            //    // txtBox.Text += "1";
-            //}
+        private void txtBox_KeyPress(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.D0 || e.KeyCode == Keys.NumPad0)
+            {
+                //txtBox.Text += "0";
+            }
 
-            //else if (e.KeyCode == Keys.D2 || e.KeyCode == Keys.NumPad2)
-            //{
-            //    // txtBox.Text += "2";
-            //}
+            else if (e.KeyCode == Keys.D1 || e.KeyCode == Keys.NumPad1)
+            {
+                //txtBox.Text += "1";
+            }
 
-            //else if (e.KeyCode == Keys.D3 || e.KeyCode == Keys.NumPad3)
-            //{
-            //    // txtBox.Text += "3";
-            //}
+            else if (e.KeyCode == Keys.D2 || e.KeyCode == Keys.NumPad2)
+            {
+                // txtBox.Text += "2";
+            }
 
-            //else if (e.KeyCode == Keys.D4 || e.KeyCode == Keys.NumPad4)
-            //{
-            //    //  txtBox.Text += "4";
-            //}
+            else if (e.KeyCode == Keys.D3 || e.KeyCode == Keys.NumPad3)
+            {
+                // txtBox.Text += "3";
+            }
 
-            //else if (e.KeyCode == Keys.D5 || e.KeyCode == Keys.NumPad5)
-            //{
-            //    //  txtBox.Text += "5";
-            //}
+            else if (e.KeyCode == Keys.D4 || e.KeyCode == Keys.NumPad4)
+            {
+                //  txtBox.Text += "4";
+            }
 
-            //else if (e.KeyCode == Keys.D6 || e.KeyCode == Keys.NumPad6)
-            //{
-            //    //  txtBox.Text += "6";
-            //}
+            else if (e.KeyCode == Keys.D5 || e.KeyCode == Keys.NumPad5)
+            {
+                //  txtBox.Text += "5";
+            }
 
-            //else if (e.KeyCode == Keys.D7 || e.KeyCode == Keys.NumPad7)
-            //{
-            //    //  txtBox.Text += "7";
-            //}
+            else if (e.KeyCode == Keys.D6 || e.KeyCode == Keys.NumPad6)
+            {
+                //  txtBox.Text += "6";
+            }
 
-            //else if (e.KeyCode == Keys.D8 || e.KeyCode == Keys.NumPad8)
-            //{
-            //    // txtBox.Text += "8";
-            //}
+            else if (e.KeyCode == Keys.D7 || e.KeyCode == Keys.NumPad7)
+            {
+                //  txtBox.Text += "7";
+            }
 
-            //else if (e.KeyCode == Keys.D9 || e.KeyCode == Keys.NumPad9)
-            //{
-            //    // txtBox.Text += "9";
-            //}
+            else if (e.KeyCode == Keys.D8 || e.KeyCode == Keys.NumPad8)
+            {
+                // txtBox.Text += "8";
+            }
 
-            //if (e.KeyCode == Keys.Add)
-            //{
-            //    ClearCalculationValiabel();
-            //    _firstValue = Convert.ToInt32(txtBox.Text);
-            //    _calcOperatorMode = CalcType.Addition;
-            //    ClearCalculationValiabel();
-            //}
+            else if (e.KeyCode == Keys.D9 || e.KeyCode == Keys.NumPad9)
+            {
+                // txtBox.Text += "9";
+            }
 
-            //else if (e.KeyCode == Keys.Subtract)
-            //{
-            //    ClearCalculationValiabel();
-            //    _firstValue = Convert.ToInt32(txtBox.Text);
-            //    _calcOperatorMode = CalcType.Subtraction;
-            //    ClearCalculationValiabel();
-            //}
+            if (e.KeyCode == Keys.Add)
+            {
+                ClearCalculationValiabel();
+                //txtBox.Text = txtBox.Text.Substring(0, txtBox.Text.Length - 1);
+                //_firstValue = Convert.ToDouble(txtBox.Text.Length - 1);
+                _firstValue = Convert.ToDouble(txtBox.Text);
+                _calcOperatorMode = CalcType.Addition;
+                ClearCalculationValiabel();
+            }
 
-            //else if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Enter)
-            //{
-            //    btnEquals_Click(sender, e);
-            //}
+            else if (e.KeyCode == Keys.Subtract)
+            {
+                ClearCalculationValiabel();
+                _firstValue = Convert.ToDouble(txtBox.Text);
+                _calcOperatorMode = CalcType.Subtraction;
+                ClearCalculationValiabel();
+                txtBox.Focus();
+            }
+
+            else if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Enter)
+            {
+                btnEquals_Click(sender, e);
+            }
 
             //else
             //{
@@ -224,6 +271,9 @@ namespace LabWindowsForms
             //else if (!string.IsNullOrEmpty(name1)) { }
         }
 
-        
+        private void txtBox_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
